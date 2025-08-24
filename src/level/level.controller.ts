@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import type { LevelSubject } from './level';
+import type { LevelSubject } from '../types/level';
 import { LevelService } from 'src/level/level.service';
 
 @Controller('level')

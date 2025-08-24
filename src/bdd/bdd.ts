@@ -1,4 +1,20 @@
+import type { Level } from '../types/level';
 import type { Subject } from '../types/subject';
+
+export const LEVELS: Level[] = [
+  {
+    id: 1,
+    title: 'Primaire',
+  },
+  {
+    id: 2,
+    title: 'Collège',
+  },
+  {
+    id: 3,
+    title: 'Lycée',
+  },
+];
 
 export const SUBJECTS: Subject[] = [
   {
@@ -17,3 +33,8 @@ export const SUBJECTS: Subject[] = [
     level_id: 3,
   },
 ];
+
+export default {
+  subjects: SUBJECTS,
+  levels: LEVELS,
+}

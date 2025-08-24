@@ -1,4 +1,4 @@
-import type { Level } from './level';
+import type { Level } from '../types/level';
 
 export const LEVELS: Level[] = [
   {

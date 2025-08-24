@@ -1,14 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import type { LevelSubject } from './level';
+import type { Level, LevelSubject } from '../types/level';
 import { SubjectService } from 'src/subject/subject.service';
-import { LEVELS } from 'src/level/bdd';
+import { BddService } from 'src/bdd/bdd.service';
 
 @Injectable()
 export class LevelService {
-  constructor(private readonly subjectService: SubjectService) {}
+  constructor(
+    private readonly subjectService: SubjectService,
+    private readonly bdd: BddService,
+  ) {}
   findByNameWithSubject(title: string): LevelSubject[] {
-    const level = LEVELS.find((level) => level.title === title);
-    const subjects = this.subjectService.all();
+    const level = this.bdd
+      .get<Level>('levels')
+      .find((level) => level.title === title);
+    const subjects = this.subjectService.findAll();
     //if (level) {
     const subjectFiltered = subjects.filter(
       (subject) => subject.level_id === level?.id,
